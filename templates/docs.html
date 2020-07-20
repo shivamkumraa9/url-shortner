@@ -21,7 +21,7 @@ import requests
 
 data = {'email':"shivamkumraa9@gmail.com"} # Specify your email.
 # send the post request
-r = requests.post("http://localhost:5000/api/user/generate-token/",data = data)
+r = requests.post("https://iurl-shortner.herokuapp.com/api/user/generate-token/",data = data)
 print(r.text)</code>
             </pre>  
             <h4>Output :</h4>
@@ -44,7 +44,7 @@ data = {'token':"2573fe4b74c8d1115b891a72344f5e6825bd1088",
         "url":"https://www.google.com"
         }
 
-r = requests.post("http://localhost:5000/api/url/generate-url/",data = data)
+r = requests.post("https://iurl-shortner.herokuapp.com/api/url/generate-url/",data = data)
 print(r.text)</code>
             </pre>  
             <h4>Output :</h4>
@@ -54,7 +54,7 @@ print(r.text)</code>
   "code": "28e065", 
   "hits": 0, 
   "original": "https://www.google.com", 
-  "short": "http://localhost:5000/28e065/"
+  "short": "https://iurl-shortner.herokuapp.com/28e065/"
 }</code>
             </pre> 
 
@@ -66,10 +66,10 @@ print(r.text)</code>
 import requests
 
 data = {'token':"2573fe4b74c8d1115b891a72344f5e6825bd1088",
-        "url":"http://localhost:5000/28e065/"
+        "url":"https://iurl-shortner.herokuapp.com/28e065/"
        }
 
-r = requests.get("http://localhost:5000/api/url/stats/",data = data)
+r = requests.get("https://iurl-shortner.herokuapp.com/api/url/stats/",data = data)
 print(r.text)</code>
             </pre>  
             <h4>Output :</h4>
@@ -79,7 +79,7 @@ print(r.text)</code>
   "code": "28e065", 
   "hits": 100, 
   "original": "https://www.google.com", 
-  "short": "http://localhost:5000/28e065/"
+  "short": "https://iurl-shortner.herokuapp.com/28e065/"
 }</code>
             </pre>
 
@@ -92,7 +92,7 @@ import requests
 
 data = {'token':"2573fe4b74c8d1115b891a72344f5e6825bd1088"}
 
-r = requests.get("http://localhost:5000/api/url/stats/all",data = data)
+r = requests.get("https://iurl-shortner.herokuapp.com/api/url/stats/all",data = data)
 print(r.text)</code>
             </pre>  
             <h4>Output :</h4>
@@ -103,13 +103,13 @@ print(r.text)</code>
     "code": "28e065", 
     "hits": 0, 
     "original": "https://www.google.com", 
-    "short": "http://localhost:5000/28e065/"
+    "short": "https://iurl-shortner.herokuapp.com/28e065/"
   }, 
   {
     "code": "9759f6", 
     "hits": 0, 
     "original": "https://www.youtube.com", 
-    "short": "http://localhost:5000/9759f6/"
+    "short": "https://iurl-shortner.herokuapp.com/9759f6/"
   }
 ]</code>
             </pre>
@@ -121,10 +121,10 @@ print(r.text)</code>
 import requests
 
 data = {'token':"2573fe4b74c8d1115b891a72344f5e6825bd1088",
-        'url':'http://localhost:5000/9759f6/'
+        'url':'https://iurl-shortner.herokuapp.com/9759f6/'
        }
 
-r = requests.delete("http://localhost:5000/api/url/delete-url/",data = data)
+r = requests.delete("https://iurl-shortner.herokuapp.com/api/url/delete-url/",data = data)
 print(r.text)</code>
             </pre>  
             <h4>Output :</h4>
@@ -143,7 +143,7 @@ import requests
 
 data = {'token':"2573fe4b74c8d1115b891a72344f5e6825bd1088"}
 
-r = requests.delete("http://localhost:5000/api/url/delete-url/all/",data = data)
+r = requests.delete("https://iurl-shortner.herokuapp.com/api/url/delete-url/all/",data = data)
 print(r.text)
 </code>
             </pre>  
@@ -164,7 +164,7 @@ import requests
 
 data = {'token':"2573fe4b74c8d1115b891a72344f5e6825bd1088"}
 
-r = requests.delete("http://localhost:5000/api/user/delete-account/",data = data)
+r = requests.delete("https://iurl-shortner.herokuapp.com/api/user/delete-account/",data = data)
 print(r.text)</code>
             </pre>  
             <h4>Output :</h4>
@@ -184,7 +184,7 @@ import requests
 
 data = {'token':"339f8c5b8eb008f6db24ad37dd4e36a30e7f343a"}
 
-r = requests.put("http://localhost:5000/api/user/change-token/",data = data)
+r = requests.put("https://iurl-shortner.herokuapp.com/api/user/change-token/",data = data)
 print(r.text)</code>
             </pre>  
             <h4>Output :</h4>

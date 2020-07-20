@@ -12,9 +12,9 @@ import os
 ##################################################### Settings ####################################################
 
 
-EMAIL = "shivamkumraa10@gmail.com"
-PASSWORD = "fd5saf5asdf5as#%$"
-SITE = "http://localhost:5000/"
+EMAIL = os.environ['EMAIL']
+PASSWORD = os.environ['PASSWORD']
+SITE = "https://iurl-shortner.herokuapp.com/"
 
 
 app = Flask(__name__)
