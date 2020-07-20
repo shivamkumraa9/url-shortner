@@ -1,0 +1,59 @@
+{% extends "base.html" %}
+
+{% block title %}
+<title>Url Shortner</title>
+
+{% endblock %}
+
+{% block content %}
+
+  <!-- Masthead -->
+  <header class="masthead text-white text-center">
+    <div class="overlay"></div>
+    <div class="container">
+      <div class="row">
+        <div class="col-xl-9 mx-auto">
+          <h1 class="mb-5">Free Url Shortner rest api and service built with python flask framework</h1>
+        </div>
+        <div class="col-md-10 col-lg-8 col-xl-7 mx-auto">
+            <a href="/api/docs" class="btn btn-lg btn-primary">Check Documentation</a>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <section class="features-icons bg-light text-center">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-4">
+          <div class="features-icons-item mx-auto mb-5 mb-lg-0 mb-lg-3">
+            <div class="features-icons-icon d-flex">
+              <i class="fas fa-desktop m-auto text-primary"></i>
+            </div>
+            <h3>Free Service</h3>
+            <p class="lead mb-0">Free sign up for the service, get the token and start using it.</p>
+          </div>
+        </div>
+        <div class="col-lg-4">
+          <div class="features-icons-item mx-auto mb-5 mb-lg-0 mb-lg-3">
+            <div class="features-icons-icon d-flex">
+              <i class="fas fa-chart-area m-auto text-primary"></i>
+            </div>
+            <h3>Check Analytics</h3>
+            <p class="lead mb-0">Check the analytics of your urls by a single request</p>
+          </div>
+        </div>
+        <div class="col-lg-4">
+          <div class="features-icons-item mx-auto mb-0 mb-lg-3">
+            <div class="features-icons-icon d-flex">
+              <i class="fas fa-tasks m-auto text-primary"></i>
+            </div>
+            <h3>Easy Manage</h3>
+            <p class="lead mb-0">Easily manage all your urls by a single request</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+{% endblock %}

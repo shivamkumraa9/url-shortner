@@ -1,0 +1,214 @@
+{% extends "base.html" %}
+
+{% block title %}
+<title>Documentation</title>
+<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.6.0/themes/prism-okaidia.min.css">
+{% endblock %}
+
+{% block content %}
+
+  <section id="docs" class="py-3">
+      <div class="container">
+        <div class="docs-container pt-4">
+            <h1 class="text-center pb-3">Documentation</h1>
+
+            <h2 class="my-4">1. Generate Token</h2> 
+            <p class="normal-text">For the demonstration of the service i will be using requests library of python to send requests to the server.</p>
+            <p class="normal-text">To use the service you need a unique token which you can generate by sending a post request to /api/user/generate-token/. After that your token will be send to your email</p>
+            <pre class=" language-python">
+              <code class="language-python">
+import requests
+
+data = {'email':"shivamkumraa9@gmail.com"} # Specify your email.
+# send the post request
+r = requests.post("http://localhost:5000/api/user/generate-token/",data = data)
+print(r.text)</code>
+            </pre>  
+            <h4>Output :</h4>
+            <pre class=" language-python">
+              <code class="language-python">
+{
+  "status": " token sent to email"
+}</code>
+            </pre> 
+
+
+            <h2 class="my-4">2. Generate Short Url</h2> 
+            <p class="normal-text">Now after creating the token its time to generate some short urls. Here is the code.</p>
+            <pre class=" language-python">
+              <code class="language-python">
+import requests
+
+# Create the short url
+data = {'token':"2573fe4b74c8d1115b891a72344f5e6825bd1088",
+        "url":"https://www.google.com"
+        }
+
+r = requests.post("http://localhost:5000/api/url/generate-url/",data = data)
+print(r.text)</code>
+            </pre>  
+            <h4>Output :</h4>
+            <pre class=" language-python">
+              <code class="language-python">
+{
+  "code": "28e065", 
+  "hits": 0, 
+  "original": "https://www.google.com", 
+  "short": "http://localhost:5000/28e065/"
+}</code>
+            </pre> 
+
+
+            <h2 class="my-4">3. Get Stats</h2> 
+            <p class="normal-text">Now to get the stats of url you need to send get request to /api/url/stats/. Here is the code.</p>
+            <pre class=" language-python">
+              <code class="language-python">
+import requests
+
+data = {'token':"2573fe4b74c8d1115b891a72344f5e6825bd1088",
+        "url":"http://localhost:5000/28e065/"
+       }
+
+r = requests.get("http://localhost:5000/api/url/stats/",data = data)
+print(r.text)</code>
+            </pre>  
+            <h4>Output :</h4>
+            <pre class=" language-python">
+              <code class="language-python">
+{
+  "code": "28e065", 
+  "hits": 100, 
+  "original": "https://www.google.com", 
+  "short": "http://localhost:5000/28e065/"
+}</code>
+            </pre>
+
+
+            <h2 class="my-4">4. Get All Stats</h2> 
+            <p class="normal-text">If you want to see the stats of all your urls then you need to send the get request to /api/url/stats/all. Here is the code.</p>
+            <pre class=" language-python">
+              <code class="language-python">
+import requests
+
+data = {'token':"2573fe4b74c8d1115b891a72344f5e6825bd1088"}
+
+r = requests.get("http://localhost:5000/api/url/stats/all",data = data)
+print(r.text)</code>
+            </pre>  
+            <h4>Output :</h4>
+            <pre class=" language-python">
+              <code class="language-python">
+[
+  {
+    "code": "28e065", 
+    "hits": 0, 
+    "original": "https://www.google.com", 
+    "short": "http://localhost:5000/28e065/"
+  }, 
+  {
+    "code": "9759f6", 
+    "hits": 0, 
+    "original": "https://www.youtube.com", 
+    "short": "http://localhost:5000/9759f6/"
+  }
+]</code>
+            </pre>
+
+            <h2 class="my-4">5. Delete A Short Url</h2> 
+            <p class="normal-text">If you want to delete any shorten url from your account you can do this by sending a delete request to /api/url/delete-url/.</p>
+            <pre class=" language-python">
+              <code class="language-python">
+import requests
+
+data = {'token':"2573fe4b74c8d1115b891a72344f5e6825bd1088",
+        'url':'http://localhost:5000/9759f6/'
+       }
+
+r = requests.delete("http://localhost:5000/api/url/delete-url/",data = data)
+print(r.text)</code>
+            </pre>  
+            <h4>Output :</h4>
+            <pre class=" language-python">
+              <code class="language-python">
+{
+  "status": "deleted successfully"
+}</code>
+            </pre>
+
+            <h2 class="my-4">6. Delete All Urls</h2> 
+            <p class="normal-text">If you want to delete all shorten url from your account you can do this by sending a delete request to /api/url/delete-url/all/.</p>
+            <pre class=" language-python">
+              <code class="language-python">
+import requests
+
+data = {'token':"2573fe4b74c8d1115b891a72344f5e6825bd1088"}
+
+r = requests.delete("http://localhost:5000/api/url/delete-url/all/",data = data)
+print(r.text)
+</code>
+            </pre>  
+            <h4>Output :</h4>
+            <pre class=" language-python">
+              <code class="language-python">
+{
+  "status": "deleted successfully"
+}</code>
+            </pre>
+
+
+            <h2 class="my-4">7. Delete Account</h2> 
+            <p class="normal-text">If you want to delete your entire account from the database you can do this by sending delete request to /api/user/delete-account/.</p>
+            <pre class=" language-python">
+              <code class="language-python">
+import requests
+
+data = {'token':"2573fe4b74c8d1115b891a72344f5e6825bd1088"}
+
+r = requests.delete("http://localhost:5000/api/user/delete-account/",data = data)
+print(r.text)</code>
+            </pre>  
+            <h4>Output :</h4>
+            <pre class=" language-python">
+              <code class="language-python">
+{
+  "status": "account deleted"
+}</code>
+            </pre>
+
+
+            <h2 class="my-4">8. Change Token</h2> 
+            <p class="normal-text">If you want to change your token you need to send put request to /api/user/change-token/. your new token will be send to your email.</p>
+            <pre class=" language-python">
+              <code class="language-python">
+import requests
+
+data = {'token':"339f8c5b8eb008f6db24ad37dd4e36a30e7f343a"}
+
+r = requests.put("http://localhost:5000/api/user/change-token/",data = data)
+print(r.text)</code>
+            </pre>  
+            <h4>Output :</h4>
+            <pre class=" language-python">
+              <code class="language-python">
+{
+  "status": " token sent to email"
+}</code>
+            </pre>
+
+
+        </div>
+
+      </div>
+
+      
+      
+  </section>
+
+{% endblock %}
+
+
+{% block javascript %}
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.6.0/prism.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.6.0/components/prism-python.min.js
+"></script>
+{% endblock %}
