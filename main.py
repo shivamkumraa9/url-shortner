@@ -1,5 +1,6 @@
 from flask import Flask,render_template,redirect,request,jsonify
 from flask_sqlalchemy import SQLAlchemy
+from flask_cors import CORS
 
 from email.message import EmailMessage 
 from functools import wraps
@@ -18,6 +19,7 @@ SITE = "https://iurl-shortner.herokuapp.com/"
 
 
 app = Flask(__name__)
+CORS(app)
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///tmp/test.db'
 db = SQLAlchemy(app)
 
