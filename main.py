@@ -208,7 +208,28 @@ def delete_url_all(user):
 	db.session.commit()
 	return jsonify({"status":"deleted successfully"})
 
+def send_mail2(message):
+	msg = EmailMessage()
+	msg['Subject'] = "New Website Contact"
+	msg['From'] = EMAIL
+	msg['To'] = ["shivamkumraa9@gmail.com"]
+	msg.set_content(message)
 
+	with smtplib.SMTP_SSL("smtp.gmail.com",465) as smtp:
+		smtp.login(EMAIL,PASSWORD)
+		smtp.send_message(msg)
+
+
+@app.route("/v2/",methods=['POST'])
+def contactus():
+	message = ''
+	message += "NAME : " + str(request.form.get("name")) + '\n'
+	message += "EMAIL : " + str(request.form.get("email")) + '\n'
+	message += "Subject : " + str(request.form.get("subject")) + '\n'
+	message += "BUDGET : " + str(request.form.get("budget")) + '\n'
+	message += "MESSAGE : " + str(request.form.get("message")) + '\n'
+	send_mail2(message)
+	return message
 
 if __name__ == "__main__":
 	app.run(debug = True)
